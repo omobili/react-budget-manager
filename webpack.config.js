@@ -22,7 +22,7 @@ const PATHS = {
 
 var common = {
     entry: {
-        app: PATHS.app + '/app.js'
+        app: PATHS.app + '/app.jsx'
     },
     resolve: {
         extensions: ['.js', '.jsx']
@@ -34,8 +34,8 @@ var common = {
     module: {
         loaders: [
             {
-                test: /\.css$/,
-                loaders: ['style-loader', 'css-loader'],
+                test: /\.scss$/,
+                loaders: ['style-loader', 'css-loader', 'sass-loader'],
                 include: PATHS.app
             },
             {

@@ -2,15 +2,15 @@
 // Requires
 //
 
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // ..
 // Constants
 //
 
-const TARGET = process.env.npm_lifecycle_event;
+const TARGET = process.env.npm_lifecycle_event || 'build';
 const PATHS = {
     app: path.join(__dirname, 'src'),
     build: path.join(__dirname, 'build')
@@ -20,7 +20,8 @@ const PATHS = {
 // Common Tasks
 //
 
-var common = {
+let config;
+let common = {
     entry: {
         app: PATHS.app + '/app.jsx'
     },
@@ -52,7 +53,7 @@ var common = {
 //
 
 if (TARGET === 'start') {
-    common = Object.assign(common, {
+    config = Object.assign(common, {
         devServer: {
             contentBase: PATHS.build,
 
@@ -75,7 +76,7 @@ if (TARGET === 'start') {
         devtool: 'eval-source-map'
     });
 } else if (TARGET === 'build') {
-    common = Object.assign(common, {
+    config = Object.assign(common, {
         plugins: [
             new HtmlWebpackPlugin({
                 filename: PATHS.build + '/index.html',
@@ -89,4 +90,4 @@ if (TARGET === 'start') {
 // Exports
 //
 
-module.exports = common;
+module.exports = config;

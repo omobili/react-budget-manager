@@ -23,15 +23,17 @@ const PATHS = {
 let config;
 let common = {
     entry: {
-        app: PATHS.app + '/app.jsx'
-    },
-    resolve: {
-        extensions: ['.js', '.jsx']
+        app: PATHS.app + '/app.tsx'
     },
     output: {
         path: PATHS.build,
         filename: 'bundle.js'
     },
+
+    resolve: {
+        extensions: [".ts", ".tsx", ".js", ".json"]
+    },
+
     module: {
         loaders: [
             {
@@ -40,9 +42,13 @@ let common = {
                 include: PATHS.app
             },
             {
-                test: /\.jsx?$/,
-                loaders: ['babel-loader?cacheDirectory'],
-                include: PATHS.app
+                test: /\.tsx?$/,
+                loaders: ['awesome-typescript-loader']
+            },
+            {
+                enforce: "pre",
+                test: /\.js$/,
+                loader: ["source-map-loader"]
             }
         ]
     }

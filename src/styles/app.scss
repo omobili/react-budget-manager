@@ -1,9 +1,2 @@
-$color: yellow;
-$font: #112233;
+@import "./boot/bootstrap-custom";
 
-body {
-    background-color: $color;
-    font-family: Arial;
-    color: $font;
-    font-weight: normal;
-}

@@ -38,7 +38,7 @@ let common = {
         loaders: [
             {
                 test: /\.scss$/,
-                loaders: ['style-loader', 'css-loader', 'sass-loader'],
+                loaders: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader'],
                 include: PATHS.app
             },
             {

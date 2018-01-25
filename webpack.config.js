@@ -61,8 +61,6 @@ let common = {
 if (TARGET === 'start') {
     config = Object.assign(common, {
         devServer: {
-            contentBase: PATHS.build,
-
             historyApiFallback: true,
             hot: true,
             inline: true,

@@ -9,12 +9,11 @@ interface budgetData {
     activities: Array<ActivityProps>;
 }
 
-
 class App extends React.Component {
     data: Array<budgetData>;
 
-    constructor() {
-        super({});
+    constructor(props: {}) {
+        super(props);
 
         this.data = [{
             month: '201801',
@@ -36,9 +35,9 @@ class App extends React.Component {
             <div className="container">
                 <div className="row">
                     <div className="col-12">
-                        {this.data[0].activities.map((activity: ActivityProps) => {
+                        {this.data[0].activities.map((activity: ActivityProps, index: number) => {
                             return (
-                                <Activity label={activity.label} amount={activity.amount}/>
+                                <Activity key={index} label={activity.label} amount={activity.amount}/>
                             );
                         })}
                     </div>

@@ -2,7 +2,7 @@ import './scss/app.scss';
 
 import * as React from "react";
 import * as ReactDom from "react-dom";
-import {Activity, ActivityProps} from "./ts/components/activity";
+import {Activity, ActivityProps} from "./ts/components/Activity";
 
 interface budgetData {
     month: string;

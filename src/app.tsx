@@ -2,9 +2,11 @@ import './styles/app.scss';
 
 import * as React from "react";
 import * as ReactDom from "react-dom";
+import {Activity, ActivityProps} from "./ts/components/activity";
 
 interface budgetData {
     month: string;
+    activities: Array<ActivityProps>;
 }
 
 
@@ -15,7 +17,14 @@ class App extends React.Component {
         super({});
 
         this.data = [{
-            month: '201801'
+            month: '201801',
+            activities: [{
+                label: 'Salaire',
+                amount: 2633.24
+            }, {
+                label: 'Cantine',
+                amount: -15
+            }]
         }];
     }
 
@@ -27,6 +36,13 @@ class App extends React.Component {
                     <div className="row">
                         <div className="col-12">
                             {this.data[0].month}
+                        </div>
+                        <div className="col-12">
+                            {this.data[0].activities.map((activity: ActivityProps) => {
+                                return (
+                                    <Activity label={activity.label} amount={activity.amount}/>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>

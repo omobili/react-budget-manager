@@ -20,10 +20,13 @@ class App extends React.Component {
             month: '201801',
             activities: [{
                 label: 'Salaire',
-                amount: 2633.24
+                amount: 1234.56
             }, {
-                label: 'Cantine',
-                amount: -15
+                label: 'Monoprix',
+                amount: -23.45
+            }, {
+                label: 'Pharmacie',
+                amount: -12.47
             }]
         }];
     }
@@ -32,17 +35,12 @@ class App extends React.Component {
         return (
             <div className="container">
                 <div className="row">
-                    <h1 className="col-12">React Budget Manager !</h1>
                     <div className="col-12">
-                        <div className="row">
-                            <div className="col-12">
-                                {this.data[0].activities.map((activity: ActivityProps) => {
-                                    return (
-                                        <Activity label={activity.label} amount={activity.amount}/>
-                                    );
-                                })}
-                            </div>
-                        </div>
+                        {this.data[0].activities.map((activity: ActivityProps) => {
+                            return (
+                                <Activity label={activity.label} amount={activity.amount}/>
+                            );
+                        })}
                     </div>
                 </div>
             </div>

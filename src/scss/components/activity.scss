@@ -1,4 +1,20 @@
 .rbm-activity {
-    display: block;
-    border: 1px solid black;
+    // .rbm-activity.rbm-activity--plus
+    &.rbm-activity--plus {
+        color: #4CAF50;
+    }
+    // .rbm-activity.rbm-activity--minus
+    &.rbm-activity--minus {
+        color: #F44336;
+    }
+
+    // .rbm-activity__label
+    &__label {
+        display: block;
+    }
+
+    // .rbm-activity__amount
+    &__amount {
+        text-align: right;
+    }
 }

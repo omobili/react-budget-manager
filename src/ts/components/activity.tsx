@@ -15,10 +15,14 @@ export class Activity extends React.Component<ActivityProps, ActivityState> {
     }
 
     render() {
+        let activityClassName = function (amount: number) {
+            return `row rbm-activity${(amount > 0) ? ' rbm-activity--plus': ' rbm-activity--minus'}`;
+        };
+
         return (
-            <div className="rbm-activity">
-                <p>{this.props.label}</p>
-                <p>{this.props.amount}</p>
+            <div className={activityClassName(this.props.amount)}>
+                <span className="col rbm-activity__label">{this.props.label}</span>
+                <span className="col rbm-activity__amount">{this.props.amount}</span>
             </div>
         )
     }

@@ -33,16 +33,15 @@ class App extends React.Component {
             <div className="container">
                 <div className="row">
                     <h1 className="col-12">React Budget Manager !</h1>
-                    <div className="row">
-                        <div className="col-12">
-                            {this.data[0].month}
-                        </div>
-                        <div className="col-12">
-                            {this.data[0].activities.map((activity: ActivityProps) => {
-                                return (
-                                    <Activity label={activity.label} amount={activity.amount}/>
-                                );
-                            })}
+                    <div className="col-12">
+                        <div className="row">
+                            <div className="col-12">
+                                {this.data[0].activities.map((activity: ActivityProps) => {
+                                    return (
+                                        <Activity label={activity.label} amount={activity.amount}/>
+                                    );
+                                })}
+                            </div>
                         </div>
                     </div>
                 </div>

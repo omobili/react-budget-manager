@@ -22,7 +22,7 @@ export class Activity extends React.Component<ActivityProps, ActivityState> {
         return (
             <div className={activityClassName(this.props.amount)}>
                 <span className="col rbm-activity__label">{this.props.label}</span>
-                <span className="col rbm-activity__amount">{this.props.amount}</span>
+                <span className="col rbm-activity__amount">{this.props.amount} €</span>
             </div>
         )
     }

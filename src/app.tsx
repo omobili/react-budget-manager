@@ -2,32 +2,25 @@ import './scss/app.scss';
 
 import * as React from "react";
 import * as ReactDom from "react-dom";
-import {Activity, ActivityProps} from "./ts/components/Activity";
 
-interface budgetData {
-    month: string;
-    activities: Array<ActivityProps>;
+import {dataService} from "./ts/services/dataService";
+import {ActivityProps} from "./ts/components/Activity";
+import {ActivityList} from "./ts/components/ActivityList";
+
+export interface AppProps {
 }
 
-class App extends React.Component {
-    data: Array<budgetData>;
+export interface AppState {
+    activities: Array<ActivityProps>
+}
 
-    constructor(props: {}) {
+class App extends React.Component<AppProps, AppState> {
+    constructor(props: AppProps) {
         super(props);
 
-        this.data = [{
-            month: '201801',
-            activities: [{
-                label: 'Salaire',
-                amount: 1234.56
-            }, {
-                label: 'Monoprix',
-                amount: -23.45
-            }, {
-                label: 'Pharmacie',
-                amount: -12.47
-            }]
-        }];
+        this.state = {
+            activities: dataService.activities
+        }
     }
 
     render() {
@@ -35,11 +28,7 @@ class App extends React.Component {
             <div className="container">
                 <div className="row">
                     <div className="col-12">
-                        {this.data[0].activities.map((activity: ActivityProps, index: number) => {
-                            return (
-                                <Activity key={index} label={activity.label} amount={activity.amount}/>
-                            );
-                        })}
+                        <ActivityList activities={this.state.activities} />
                     </div>
                 </div>
             </div>

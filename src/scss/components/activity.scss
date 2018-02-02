@@ -25,4 +25,17 @@
     &__amount {
         text-align: right;
     }
+
+    // .rbm-activity__delete
+    &__delete {
+        display: none;
+
+        .rbm-activity:hover & {
+            display: block;
+        }
+    }
+
+    .row {
+        align-items: center;
+    }
 }

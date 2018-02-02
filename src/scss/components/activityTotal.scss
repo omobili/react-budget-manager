@@ -1,11 +1,17 @@
 .rbm-activityTotal {
+    padding: 10px;
+    background-color: #9e9e9e;
+    color: #fff;
+    font-weight: bold;
 
+    &__label {
+        display: block;
+    }
+
+    &__total {
+        display: block;
+        text-align: right;
+    }
 }
 
-.rbm-activityTotal__label {
-    display: block;
-}
-.rbm-activityTotal__total {
-    display: block;
-    text-align: right;
-}
+

@@ -1,11 +1,19 @@
 .rbm-activity {
+    padding: 10px;
+    border-bottom: 1px solid #9e9e9e;
+
     // .rbm-activity.rbm-activity--plus
     &.rbm-activity--plus {
-        color: #4CAF50;
+        .rbm-activity__amount {
+            color: #4CAF50;
+        }
     }
+
     // .rbm-activity.rbm-activity--minus
     &.rbm-activity--minus {
-        color: #F44336;
+        .rbm-activity__amount {
+            color: #F44336;
+        }
     }
 
     // .rbm-activity__label

@@ -19,6 +19,7 @@ export class ActivityList extends React.Component<ActivityListProps, ActivityLis
     calcTotal(): number {
         let total = 0;
 
+        console.log(this.props.activities);
         this.props.activities.map((activity: ActivityProps) => {
             total += activity.amount;
         });
@@ -35,8 +36,8 @@ export class ActivityList extends React.Component<ActivityListProps, ActivityLis
                     );
                 })}
 
-                <ActivityTotal total={this.calcTotal()} />
-                <ActivityAdd />
+                <ActivityTotal total={this.calcTotal()}/>
+                <ActivityAdd/>
             </div>
         )
     }

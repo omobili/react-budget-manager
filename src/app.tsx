@@ -20,7 +20,13 @@ class App extends React.Component<AppProps, AppState> {
 
         this.state = {
             activities: dataService.activities
-        }
+        };
+
+        dataService.onActivitiesChange(() => {
+            this.setState({
+                activities: dataService.activities
+            });
+        })
     }
 
     render() {

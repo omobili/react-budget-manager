@@ -15,9 +15,11 @@ export class ActivityTotal extends React.Component<ActivityTotalProps, ActivityT
 
     render() {
         return (
-            <div className="row rbm-activityTotal">
-                <span className="col rbm-activityTotal__label">Total</span>
-                <span className="col rbm-activityTotal__total">{this.props.total} €</span>
+            <div className="rbm-activityTotal">
+                <div className="row">
+                    <span className="col rbm-activityTotal__label">Total</span>
+                    <span className="col rbm-activityTotal__total">{this.props.total} €</span>
+                </div>
             </div>
         )
     }

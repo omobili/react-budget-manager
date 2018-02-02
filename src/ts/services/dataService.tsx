@@ -2,6 +2,7 @@ import {ActivityProps} from "../components/Activity";
 
 class DataService {
     activities: Array<ActivityProps>;
+    private activitiesChangeHandlers: Array<Function>;
 
     constructor() {
         this.activities = [{
@@ -17,6 +18,25 @@ class DataService {
             label: 'FNAC.com',
             amount: -69.90
         }];
+
+        this.activitiesChangeHandlers = [];
+    }
+
+    addActivity(activity: ActivityProps): boolean {
+        if (activity.amount !== 0 && activity.label !== '') {
+            this.activities.push(activity);
+            this.activitiesChangeHandlers.forEach((handler: Function) => {
+                handler();
+            });
+
+            return true;
+        }
+
+        return false;
+    }
+
+    onActivitiesChange(handler: Function) {
+        this.activitiesChangeHandlers.push(handler);
     }
 }
 

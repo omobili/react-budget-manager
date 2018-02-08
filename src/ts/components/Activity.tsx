@@ -21,7 +21,7 @@ export class Activity extends React.Component<ActivityProps, ActivityState> {
     handleDelete(e: any) {
         e.preventDefault();
 
-        if (this.props.id) {
+        if (this.props.id !== undefined) {
             dataService.removeActivity(this.props.id);
         }
     }

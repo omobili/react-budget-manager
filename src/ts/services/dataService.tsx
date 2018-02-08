@@ -1,3 +1,4 @@
+import {storageService} from "./storageService";
 import {ActivityProps} from "../components/Activity";
 
 class DataService {
@@ -10,11 +11,11 @@ class DataService {
     }
 
     private load(): void {
-        this.activities = JSON.parse(window.localStorage.getItem('rbm-data')) || [];
+        this.activities = storageService.load();
     }
 
     private save(): void {
-        window.localStorage.setItem('rbm-data', JSON.stringify(this.activities));
+        storageService.save(this.activities);
     }
 
     addActivity(activity: ActivityProps): boolean {

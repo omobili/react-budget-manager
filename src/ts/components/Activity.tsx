@@ -36,9 +36,11 @@ export class Activity extends React.Component<ActivityProps, ActivityState> {
                 <div className="row">
                     <span className="col rbm-activity__label">{this.props.label}</span>
                     <span className="col-auto rbm-activity__amount">{this.props.amount} €</span>
-                    <span className="col-auto rbm-activity__delete">
-                        <button onClick={this.handleDelete} className="btn btn-danger btn-sm">Supprimer</button>
-                    </span>
+                    {this.props.id !== undefined && (
+                        <span className="col-auto rbm-activity__delete">
+                            <button onClick={this.handleDelete} className="btn btn-danger btn-sm">Supprimer</button>
+                        </span>
+                    )}
                 </div>
             </div>
         )

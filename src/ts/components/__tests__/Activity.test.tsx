@@ -1,6 +1,7 @@
 import * as React from "react";
-import {Activity} from "../Activity";
 import * as renderer from "react-test-renderer";
+
+import {Activity} from "../Activity";
 
 describe('Activity', () => {
     describe('Snapshots', () => {

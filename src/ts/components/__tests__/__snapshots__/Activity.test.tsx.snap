@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Activity Snapshots should match snapshot for a negative amount 1`] = `
+<div
+  className="rbm-activity rbm-activity--minus"
+>
+  <div
+    className="row"
+  >
+    <span
+      className="col rbm-activity__label"
+    >
+      depense
+    </span>
+    <span
+      className="col-auto rbm-activity__amount"
+    >
+      -12.45
+       €
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Activity Snapshots should match snapshot for a positive amount 1`] = `
+<div
+  className="rbm-activity rbm-activity--plus"
+>
+  <div
+    className="row"
+  >
+    <span
+      className="col rbm-activity__label"
+    >
+      recette
+    </span>
+    <span
+      className="col-auto rbm-activity__amount"
+    >
+      12.45
+       €
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Activity Snapshots should match snapshot for given id (> 0) 1`] = `
+<div
+  className="rbm-activity rbm-activity--minus"
+>
+  <div
+    className="row"
+  >
+    <span
+      className="col rbm-activity__label"
+    >
+      depense
+    </span>
+    <span
+      className="col-auto rbm-activity__amount"
+    >
+      -12.45
+       €
+    </span>
+    <span
+      className="col-auto rbm-activity__delete"
+    >
+      <button
+        className="btn btn-danger btn-sm"
+        onClick={[Function]}
+      >
+        Supprimer
+      </button>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Activity Snapshots should match snapshot for given id (0) 1`] = `
+<div
+  className="rbm-activity rbm-activity--minus"
+>
+  <div
+    className="row"
+  >
+    <span
+      className="col rbm-activity__label"
+    >
+      depense
+    </span>
+    <span
+      className="col-auto rbm-activity__amount"
+    >
+      -12.45
+       €
+    </span>
+    <span
+      className="col-auto rbm-activity__delete"
+    >
+      <button
+        className="btn btn-danger btn-sm"
+        onClick={[Function]}
+      >
+        Supprimer
+      </button>
+    </span>
+  </div>
+</div>
+`;

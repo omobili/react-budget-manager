@@ -22,7 +22,7 @@ export class Activity extends React.Component<ActivityProps, ActivityState> {
         e.preventDefault();
 
         if (this.props.id !== undefined) {
-            dataService.removeActivity(this.props.id);
+            //dataService.removeActivity(this.props.id);
         }
     }
 

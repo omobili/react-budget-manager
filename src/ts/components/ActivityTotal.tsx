@@ -3,12 +3,9 @@ import * as React from "react";
 export interface ActivityTotalProps {
     total: number
 }
+export interface ActivityTotalStates { }
 
-export interface ActivityTotalState {
-
-}
-
-export class ActivityTotal extends React.Component<ActivityTotalProps, ActivityTotalState> {
+export class ActivityTotal extends React.Component<ActivityTotalProps, ActivityTotalStates> {
     constructor(props: ActivityTotalProps) {
         super(props);
     }
@@ -21,6 +18,6 @@ export class ActivityTotal extends React.Component<ActivityTotalProps, ActivityT
                     <span className="col rbm-activityTotal__total">{this.props.total} €</span>
                 </div>
             </div>
-        )
+        );
     }
 }

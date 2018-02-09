@@ -3,42 +3,48 @@ import './scss/app.scss';
 import * as React from "react";
 import * as ReactDom from "react-dom";
 
-import {dataService} from "./ts/services/dataService";
-import {ActivityProps} from "./ts/components/Activity";
+import {BudgetData, dataService} from "./ts/services/dataService";
 import {ActivityList} from "./ts/components/ActivityList";
 
-export interface AppProps {
+interface AppProps {}
+interface AppStates {
+    budget: BudgetData
 }
 
-export interface AppState {
-    activities: Array<ActivityProps>
-}
-
-class App extends React.Component<AppProps, AppState> {
+class App extends React.Component<AppProps, AppStates> {
     constructor(props: AppProps) {
         super(props);
 
         this.state = {
-            activities: dataService.activities
+            budget: dataService.getLastBudget() // @todo quel mois recuperer ? (nom de methode ?)
         };
 
-        dataService.onActivitiesChange(() => {
+        dataService.onBudgetChange(() => {
             this.setState({
-                activities: dataService.activities
+                budget: dataService.currentBudget
             });
-        })
+        });
     }
 
     render() {
         return (
             <div className="container">
                 <div className="row">
+                    <div className="col-6">
+                        <h1>Rentrées d'argent</h1>
+                        <ActivityList type={'incomes'} activities={this.state.budget.incomes} />
+                    </div>
+                    <div className="col-6">
+                        <h1>Frais Fixes</h1>
+                        <ActivityList type={'outgoings'} activities={this.state.budget.outgoings} />
+                    </div>
                     <div className="col-12">
-                        <ActivityList activities={this.state.activities} />
+                        <h1>Dépenses courantes</h1>
+                        <ActivityList type={'spendings'} activities={this.state.budget.spendings} />
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }
 

@@ -1,27 +1,61 @@
 import {storageService} from "./storageService";
 import {ActivityProps} from "../components/Activity";
 
+export interface ActivityData {
+    label: string;
+    amount: number;
+}
+
+export interface BudgetData {
+    incomes: Array<ActivityData>;
+    outgoings: Array<ActivityData>;
+    spendings: Array<ActivityData>;
+    [key: string]: Array<ActivityData>;
+}
+
 class DataService {
-    activities: Array<ActivityProps>;
-    private activitiesChangeHandlers: Array<Function>;
+    budgets: Array<BudgetData>;
+    currentBudget: BudgetData;
+
+    private budgetChangeHandlers: Array<Function>;
 
     constructor() {
-        this.activitiesChangeHandlers = [];
+        this.budgetChangeHandlers = [];
         this.load();
     }
 
     private load(): void {
-        this.activities = storageService.load();
+        this.budgets = storageService.load();
     }
 
     private save(): void {
-        storageService.save(this.activities);
+        storageService.save(this.budgets);
     }
 
-    addActivity(activity: ActivityProps): boolean {
+    getLastBudget() {
+        if (!this.budgets.length) {
+            this.budgets.push({
+                incomes: [],
+                outgoings: [],
+                spendings: []
+            });
+
+            this.save();
+        }
+
+        this.currentBudget = this.budgets[this.budgets.length-1];
+
+        return this.currentBudget;
+    }
+
+    addActivity(type: string, activity: ActivityData): boolean {
+        if (!this.currentBudget || !this.currentBudget[type]) {
+            return false;
+        }
+
         if (activity.amount !== 0 && activity.label !== '') {
-            this.activities.push(activity);
-            this.notifyActivitiesHasChange();
+            this.currentBudget[type].push(activity);
+            this.notifyBudgetHasChange();
 
             this.save();
 
@@ -31,6 +65,19 @@ class DataService {
         return false;
     }
 
+    notifyBudgetHasChange(): void {
+        this.budgetChangeHandlers.forEach((handler: Function) => {
+            handler();
+        });
+    }
+
+    onBudgetChange(handler: Function) {
+        this.budgetChangeHandlers.push(handler);
+    }
+
+
+
+    /*
     removeActivity(key: number): void {
         if (this.activities[key]) {
             this.activities.splice(key, 1);
@@ -51,6 +98,7 @@ class DataService {
             handler();
         });
     }
+    */
 }
 
 export let dataService = new DataService();

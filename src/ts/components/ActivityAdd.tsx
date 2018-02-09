@@ -1,16 +1,13 @@
 import * as React from "react";
-import {dataService} from "../services/dataService";
+
+import {ActivityData, dataService} from "../services/dataService";
 
 export interface ActivityAddProps {
-
+    handleAddActivity: Function;
 }
+export interface ActivityAddStates extends ActivityData { }
 
-export interface ActivityAddState {
-    label: string;
-    amount: number;
-}
-
-export class ActivityAdd extends React.Component<ActivityAddProps, ActivityAddState> {
+export class ActivityAdd extends React.Component<ActivityAddProps, ActivityAddStates> {
     constructor(props: ActivityAddProps) {
         super(props);
 
@@ -37,6 +34,10 @@ export class ActivityAdd extends React.Component<ActivityAddProps, ActivityAddSt
     handleSubmit(event: any) {
         event.preventDefault();
 
+        this.props.handleAddActivity(this.state);
+
+
+        /*
         if (dataService.addActivity(this.state)) {
             this.setState({
                 label: '',
@@ -45,6 +46,7 @@ export class ActivityAdd extends React.Component<ActivityAddProps, ActivityAddSt
         } else {
             // @todo error
         }
+        */
     }
 
     render() {

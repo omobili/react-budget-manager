@@ -1,42 +1,51 @@
 import * as React from "react";
-import {Activity, ActivityProps} from "./Activity";
+
+import {dataService} from "../services/dataService";
+
+import {ActivityData} from "../services/dataService";
+
+import {Activity} from "./Activity";
 import {ActivityTotal} from "./ActivityTotal";
 import {ActivityAdd} from "./ActivityAdd";
 
 export interface ActivityListProps {
-    activities: Array<ActivityProps>
+    type: string;
+    activities: Array<ActivityData>
 }
+export interface ActivityListStates { }
 
-export interface ActivityListState {
-
-}
-
-export class ActivityList extends React.Component<ActivityListProps, ActivityListState> {
+export class ActivityList extends React.Component<ActivityListProps, ActivityListStates> {
     constructor(props: ActivityListProps) {
         super(props);
+
+        this.addActivity = this.addActivity.bind(this);
+    }
+
+    addActivity(activity: ActivityData) {
+        dataService.addActivity(this.props.type, activity);
     }
 
     calcTotal(): number {
         let total = 0;
 
-        this.props.activities.map((activity: ActivityProps) => {
+        this.props.activities.map((activity: ActivityData) => {
             total += activity.amount;
         });
 
-        return Math.round(total);
+        return parseFloat(total.toFixed(2));
     }
 
     render() {
         return (
             <div className="rbm-activityList">
-                {this.props.activities.map((activity: ActivityProps, index: number) => {
+                {this.props.activities.map((activity: ActivityData, index: number) => {
                     return (
                         <Activity key={index} label={activity.label} amount={activity.amount} id={index} />
                     );
                 })}
 
                 <ActivityTotal total={this.calcTotal()}/>
-                <ActivityAdd/>
+                <ActivityAdd handleAddActivity={this.addActivity} />
             </div>
         );
     }

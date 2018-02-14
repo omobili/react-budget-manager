@@ -19,10 +19,15 @@ export class ActivityList extends React.Component<ActivityListProps, ActivityLis
         super(props);
 
         this.addActivity = this.addActivity.bind(this);
+        this.removeActivity = this.removeActivity.bind(this);
     }
 
     addActivity(activity: ActivityData) {
-        dataService.addActivity(this.props.type, activity);
+        return dataService.addActivity(this.props.type, activity);
+    }
+
+    removeActivity(key: number) {
+        dataService.removeActivity(this.props.type, key);
     }
 
     calcTotal(): number {
@@ -40,7 +45,7 @@ export class ActivityList extends React.Component<ActivityListProps, ActivityLis
             <div className="rbm-activityList">
                 {this.props.activities.map((activity: ActivityData, index: number) => {
                     return (
-                        <Activity key={index} label={activity.label} amount={activity.amount} id={index} />
+                        <Activity key={index} label={activity.label} amount={activity.amount} id={index} handleDeleteActivity={this.removeActivity} />
                     );
                 })}
 

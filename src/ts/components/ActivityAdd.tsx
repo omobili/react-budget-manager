@@ -21,6 +21,8 @@ export class ActivityAdd extends React.Component<ActivityAddProps, ActivityAddSt
     }
 
     handleChange(event: any) {
+        console.log(event.target.value);
+
         let updatedState: any = {};
         updatedState[event.target.name] = event.target.value;
 
@@ -34,19 +36,14 @@ export class ActivityAdd extends React.Component<ActivityAddProps, ActivityAddSt
     handleSubmit(event: any) {
         event.preventDefault();
 
-        this.props.handleAddActivity(this.state);
-
-
-        /*
-        if (dataService.addActivity(this.state)) {
+        if (this.props.handleAddActivity(this.state)) {
             this.setState({
                 label: '',
                 amount: 0
             });
         } else {
-            // @todo error
+            // @todo Error.
         }
-        */
     }
 
     render() {

@@ -1,15 +1,11 @@
 import * as React from "react";
-import {dataService} from "../services/dataService";
+import {ActivityData} from "../services/dataService";
 
-export interface ActivityProps {
+export interface ActivityProps extends ActivityData {
     id?: number;
-    label: string;
-    amount: number;
+    handleDeleteActivity?: Function;
 }
-
-export interface ActivityState {
-
-}
+export interface ActivityState { }
 
 export class Activity extends React.Component<ActivityProps, ActivityState> {
     constructor(props: ActivityProps) {
@@ -21,8 +17,8 @@ export class Activity extends React.Component<ActivityProps, ActivityState> {
     handleDelete(e: any) {
         e.preventDefault();
 
-        if (this.props.id !== undefined) {
-            //dataService.removeActivity(this.props.id);
+        if (this.props.id !== undefined && this.props.handleDeleteActivity) {
+            this.props.handleDeleteActivity(this.props.id);
         }
     }
 

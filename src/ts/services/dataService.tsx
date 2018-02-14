@@ -48,6 +48,19 @@ class DataService {
         return this.currentBudget;
     }
 
+    removeActivity(type: string, key: number): boolean {
+        if (!this.currentBudget || !this.currentBudget[type]) {
+            return false;
+        }
+
+        this.currentBudget[type].splice(key, 1);
+        this.notifyBudgetHasChange();
+
+        this.save();
+
+        return true;
+    }
+
     addActivity(type: string, activity: ActivityData): boolean {
         if (!this.currentBudget || !this.currentBudget[type]) {
             return false;

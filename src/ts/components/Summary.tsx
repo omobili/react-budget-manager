@@ -10,7 +10,7 @@ export class Summary extends React.Component<SummaryProps, SummaryStates> {
 
     render() {
         return (
-            <h1>Summary</h1>
+            <h1>Résumé</h1>
         )
     }
 }

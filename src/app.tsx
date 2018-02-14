@@ -5,6 +5,7 @@ import * as ReactDom from "react-dom";
 
 import {BudgetData, dataService} from "./ts/services/dataService";
 import {ActivityList} from "./ts/components/ActivityList";
+import {Summary} from "./ts/components/Summary";
 
 interface AppProps {}
 interface AppStates {
@@ -41,6 +42,11 @@ class App extends React.Component<AppProps, AppStates> {
                     <div className="col-12">
                         <h1>Dépenses courantes</h1>
                         <ActivityList type={'spendings'} activities={this.state.budget.spendings} />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-12">
+                        <Summary />
                     </div>
                 </div>
             </div>
